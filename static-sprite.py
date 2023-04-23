@@ -31,7 +31,7 @@ class Sprite(pygame.sprite.Sprite):
 
 pygame.init()
 
-screen = pygame.display.set_mode((1080, 900))
+screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("Pixel Tales")
 
 
