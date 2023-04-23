@@ -3,10 +3,12 @@ import time
 
 
 class Sprite(pygame.sprite.Sprite):
-    def __init__(self, x, y, front, back):
+    def __init__(self, x, y, front, back, fright, fleft):
         super().__init__()
         self.front = front
         self.back = back
+        self.fright = fright
+        self.fleft = fleft
         self.image = self.front  # starts with front facing image
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -20,8 +22,10 @@ class Sprite(pygame.sprite.Sprite):
             self.image = self.front
             self.rect.y += 2
         if keys[pygame.K_a]:
+            self.image = self.fleft
             self.rect.x -= 2
         if keys[pygame.K_d]:
+            self.image = self.fright
             self.rect.x += 2
 
 
@@ -41,8 +45,10 @@ def load_sprite(dir, sx, sy):
 
 jake_front = load_sprite('32x-files/render32/v4/jake-front.png', 3, 3)
 jake_back = load_sprite('32x-files/render32/v4/jake-back.png', 3, 3)
+jake_left = load_sprite('32x-files/render32/v4/jake-left.png', 3, 3)
+jake_right = load_sprite('32x-files/render32/v4/jake-right.png', 3, 3)
 
-jake_sprite = Sprite(32, 32, jake_front, jake_back)
+jake_sprite = Sprite(32, 32, jake_front, jake_back, jake_right, jake_left)
 
 all_sprites = pygame.sprite.Group()
 all_sprites.add(jake_sprite)
